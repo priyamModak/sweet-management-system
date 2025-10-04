@@ -1,0 +1,36 @@
+<div class="master-container">
+  <h2>Master List</h2>
+  <table class="inventory-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sweet of sweets">
+        <td>{{ sweet.name }}</td>
+        <td>{{ sweet.price }}</td>
+        <td>{{ sweet.category }}</td>
+        <td>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <label class="switch">
+              <input type="checkbox" [checked]="sweet.available" (change)="toggleStatus(sweet)" />
+              <span class="slider"></span>
+            </label>
+            <span class="status-text" [ngClass]="{'available': sweet.available, 'unavailable': !sweet.available}">
+              {{ sweet.available ? 'Available' : 'Unavailable' }}
+            </span>
+          </div>
+        </td>
+        <td>
+          <button class="action-btn edit" (click)="editSweet(sweet)">Edit</button>
+          <button class="action-btn delete" (click)="deleteSweet(sweet)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

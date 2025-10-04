@@ -1,0 +1,16 @@
+<div class="report-container">
+  <h2>Sales Report</h2>
+  <select [(ngModel)]="reportType">
+    <option value="weekly">Weekly</option>
+    <option value="monthly">Monthly</option>
+    <option value="datewise">Date Wise</option>
+  </select>
+  <input [(ngModel)]="startDate" type="date" placeholder="Start Date" />
+  <input [(ngModel)]="endDate" type="date" placeholder="End Date" />
+  <button>Get Report</button>
+  <ul>
+    <li *ngFor="let r of filteredReports">
+      {{ r.date }} - Total: {{ r.total }}
+    </li>
+  </ul>
+</div>

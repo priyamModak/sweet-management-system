@@ -1,0 +1,86 @@
+<div class="login-container">
+  <div class="container-fluid">
+    <div class="row justify-content-center align-items-center min-vh-100">
+      <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+        <div class="login-card card shadow-lg border-0">
+          <div class="card-body p-4 p-md-5">
+            <!--header-->
+            <div class="text-center mb-4">
+              <div class="brand-icon mb-3">
+                <span class="fs-1">🍬</span>
+              </div>
+              <h2 class="brand-title fw-bold mb-2">Sweet shop</h2>
+              <p class="text-muted">Please login to your account</p>
+            </div>
+
+            <!--login form-->
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+              <!--username Field-->
+              <div class="mb-3">
+                <label for="username" class="form-label fw-semibold">Username</label>
+                <input 
+                  type="text"
+                  class="form-control form-control-lg"
+                  id="username"
+                  formControlName="username" 
+                  placeholder="Enter your username"
+                  [class.is-invalid]="loginForm.get('username')?.invalid && loginForm.get('username')?.touched"
+                >
+                <div class="invalid-feedback" *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
+                  Username is required
+                </div>
+              </div>
+
+              <!--password Field-->
+              <div class="mb-3">
+                <label for="password" class="form-label fw-semibold">Password</label>
+                <input 
+                  id="password" 
+                  type="password" 
+                  formControlName="password" 
+                  class="form-control form-control-lg"
+                  placeholder="Enter your password"
+                  [class.is-invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+                  />
+                <div class="invalid-feedback" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+                  Password is required
+                </div>
+              </div>
+
+              <!--Role selection-->
+              <div class="mb-4">
+                <label for="role" class="form-label fw-semibold">Login as</label>
+                <select
+                  id="role"
+                  class="form-select form-select-lg"
+                  formControlName="role"
+                >
+                  <option value="admin">Admin</option>
+                  <option value="user">User</option>
+                  </select>
+                </div>
+              
+                <!--error message-->
+                <div class="alert alert-danger" *ngIf="errorMessage" role="alert">
+                  <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                  {{ errorMessage }}
+                </div>
+                
+                <!--submit button-->
+              <div class="d-grid">
+                <button 
+                  type="submit" 
+                  class="btn btn-primary btn-lg" 
+                  [disabled]="loginForm.invalid || loading">
+                  <span class="spinner-border spinner-border-sm me-2" *ngIf="loading" role="status"></span>
+                  {{loading ? 'Logging in...' : 'Login'}}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

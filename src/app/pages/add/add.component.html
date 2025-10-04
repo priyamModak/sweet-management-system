@@ -1,0 +1,25 @@
+<div class="add-container">
+  <h2>Add Sweet</h2>
+  <form (ngSubmit)="addSweet()">
+  <label><span>Sweet Name <span style="color:red;vertical-align:middle;">*</span></span>
+      <input [(ngModel)]="newSweet.name" name="name" placeholder="Sweet Name" required />
+    </label>
+  <label><span>Sweet Category <span style="color:red;vertical-align:middle;">*</span></span>
+      <input [(ngModel)]="newSweet.category" name="category" placeholder="Category" required />
+    </label>
+  <label><span>Price <span style="color:red;vertical-align:middle;">*</span></span>
+      <input [(ngModel)]="newSweet.price" name="price" type="number" placeholder="Price" required min="0" />
+    </label>
+  <label><span>Unit <span style="color:red;vertical-align:middle;">*</span></span>
+      <select [(ngModel)]="newSweet.unit" name="unit" required>
+        <option value="kg">kg</option>
+        <option value="piece">piece</option>
+      </select>
+    </label>
+    <label class="checkbox-inline">
+      <input type="checkbox" [(ngModel)]="newSweet.available" name="available" />
+      Available for Sale
+    </label>
+    <button type="submit">Add Sweet</button>
+  </form>
+</div>
